@@ -1,0 +1,77 @@
+<header class="row mt-5">
+  <div class="col">
+    <h1>Agregar Productos</h1>
+    <hr>
+  </div>
+</header>
+
+<div class="row">
+  <div class="col">
+    <form [formGroup]="miFormulario">
+      <div class="row g-3 align-items-center mb-3">
+        <div class="col-auto">
+          <label for="nombreInput" class="col-form-label" >Nombre</label>
+        </div>
+        <div class="col-auto">
+          <input id="nombreInput"
+                 class="form-control"
+                 formControlName="nombre"
+          >
+        </div>
+
+        <div class="col-auto">
+          <span error-msg
+                [mensaje]="text1"
+                [color]="color"
+                [valido] = "!tieneError('nombre')"
+
+
+          >
+            Este campo es requerido
+          </span>
+        </div>
+
+
+      </div>
+
+      <div class="row">
+        <div class="col">
+          <button type="button" (click)="cambiarNombre()" class="btn btn-primary">Guardar</button>
+        </div>
+        <div class="col">
+          <button type="button" (click)="cambiarColor()" class="btn btn-primary">Cambiar Color</button>
+        </div>
+      </div>
+    </form>
+  </div>
+</div>
+
+<div class="row mt-5">
+  <div class="col">
+    <h3>Formulario</h3>
+
+    <h5>Valid:</h5>
+    <pre>
+      {{ miFormulario.valid | json}}
+    </pre>
+    <h5>Value:</h5>
+    <pre>
+      {{ miFormulario.value | json}}
+    </pre>
+
+  </div>
+</div>
+
+<div class="row mt-5"
+     *customIf="miFormulario.valid"
+
+
+
+>
+  <div class="col">
+    <div class="alert alert-primary">
+      Todo OK!!
+    </div>
+  </div>
+</div>
+
